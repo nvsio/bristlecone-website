@@ -10,8 +10,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Philosophy", href: "#philosophy" },
+  { label: "Focus", href: "#focus" },
 ];
 
 export default function Navigation() {
@@ -66,24 +65,20 @@ export default function Navigation() {
       className="fixed left-0 right-0 top-0 z-50 transition-all"
       style={{
         transitionDuration: 'var(--transition-smooth)',
-        backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-        background: scrolled 
-          ? 'rgba(250, 250, 250, 0.72)' 
-          : 'transparent',
-        borderBottom: scrolled 
-          ? '1px solid var(--color-border)' 
-          : '1px solid transparent'
+        backdropFilter: scrolled ? 'blur(8px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(8px)' : 'none',
+        background: scrolled ? 'rgba(250,250,250,0.75)' : 'transparent',
+        borderBottom: '1px solid var(--color-border)'
       }}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link 
           href="/"
           className="group flex items-center gap-3 transition-all"
           style={{ transitionDuration: 'var(--transition-fast)' }}
         >
           <div 
-            className="flex h-10 w-10 items-center justify-center rounded-full transition-all"
+            className="flex h-9 w-9 items-center justify-center rounded-full transition-all"
             style={{
               background: 'var(--color-text-primary)',
               transform: 'scale(1)',
@@ -96,7 +91,7 @@ export default function Navigation() {
               e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
             }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path 
                 d="M12 2L2 7L12 12L22 7L12 2Z" 
                 stroke="white" 
@@ -121,7 +116,7 @@ export default function Navigation() {
             </svg>
           </div>
           <span 
-            className="text-lg font-light tracking-tight"
+            className="text-base font-medium tracking-tight"
             style={{
               fontFamily: 'var(--font-display)',
               color: 'var(--color-text-primary)',
@@ -140,13 +135,11 @@ export default function Navigation() {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="relative px-4 py-2 text-sm transition-all"
+                className="relative px-3 py-2 text-sm transition-all"
                 style={{
                   fontFamily: 'var(--font-text)',
-                  color: isActive 
-                    ? 'var(--color-text-primary)' 
-                    : 'var(--color-text-secondary)',
-                  fontWeight: isActive ? 500 : 400,
+                  color: isActive ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                  fontWeight: 400,
                   transitionDuration: 'var(--transition-fast)'
                 }}
                 aria-current={isActive ? 'page' : undefined}
@@ -162,52 +155,13 @@ export default function Navigation() {
                 }}
               >
                 {item.label}
-                {isActive && (
-                  <div 
-                    className="absolute bottom-0 left-4 right-4 h-px"
-                    style={{
-                      background: 'var(--color-text-primary)',
-                      animation: 'expand 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards'
-                    }}
-                  />
-                )}
               </a>
             );
           })}
         </div>
 
-        <button
-          className="flex h-10 w-10 items-center justify-center rounded-full transition-all md:hidden"
-          style={{
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-border)',
-            transitionDuration: 'var(--transition-fast)'
-          }}
-          onClick={() => {
-            // Mobile menu logic would go here
-          }}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path 
-              d="M3 12H21M3 6H21M3 18H21" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+        <div className="md:hidden" />
       </nav>
-
-      <style jsx>{`
-        @keyframes expand {
-          from {
-            transform: scaleX(0);
-          }
-          to {
-            transform: scaleX(1);
-          }
-        }
-      `}</style>
     </header>
   );
 }

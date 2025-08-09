@@ -5,9 +5,7 @@ import { useEffect, useState } from 'react'
 import Navigation from './components/Navigation'
 import PortfolioShowcase from './components/PortfolioShowcase'
 import HeroCaption from './components/HeroCaption'
-import AmbientConsole from './components/AmbientConsole'
 import Philosophy from './components/Philosophy'
-import Footer from './components/Footer'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -67,16 +65,14 @@ export default function Home() {
         <HeroCaption />
       </div>
 
-      <AmbientConsole />
-
-      <div id="portfolio" className="relative mt-auto">
+      <div className="relative mt-8">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
         <PortfolioShowcase />
       </div>
       
       <Philosophy />
       
-      <Footer />
+      {/* Footer removed by request */}
     </main>
     </>
   )
