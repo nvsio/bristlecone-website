@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "./ui/card";
 
 interface Principle {
   number: string;
@@ -75,19 +77,33 @@ export default function Philosophy() {
 
   return (
     <section id="focus" ref={sectionRef} className="py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className={`mb-12 transition-opacity ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <h2 className="text-sm uppercase tracking-widest" style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.15em' }}>
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 6 }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mb-8 sm:mb-10"
+        >
+          <h2 className="text-center text-xs uppercase tracking-[0.2em] sm:text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
             Areas of Focus
           </h2>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        </motion.div>
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {focuses.map((f, i) => (
-            <div key={f.title} className="rounded-xl border p-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-pure)' }}>
-              <h3 className="text-xl font-light" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
-                {String(i + 1).padStart(2, '0')} · {f.title}
-              </h3>
-            </div>
+            <motion.div
+              key={f.title}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 8 }}
+              transition={{ delay: 0.05 * i, duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <Card>
+                <CardContent className="flex items-center justify-center py-10 sm:py-12">
+                  <h3 className="text-center text-lg font-light sm:text-xl" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
+                    {String(i + 1).padStart(2, '0')} · {f.title}
+                  </h3>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
