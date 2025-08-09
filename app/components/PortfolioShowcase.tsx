@@ -54,21 +54,22 @@ export default function PortfolioShowcase() {
 
   return (
     <section className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
-      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14">
-        <div className="grid gap-2.5 sm:gap-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}>
+      <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:py-12">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid gap-2.5 sm:gap-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}>
           {portfolioCompanies.map((company, index) => (
             <motion.a
               key={company.id}
               href={company.href}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.01, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ delay: index * 0.02, duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="group relative block overflow-hidden rounded-xl border bg-white transition-colors hover:bg-gray-50"
               style={{ borderColor: 'var(--color-border)' }}
             >
-              <div className="flex h-28 items-center justify-center p-5 sm:h-32 sm:p-6">
+              <div className="flex h-24 items-center justify-center p-4 sm:h-28 sm:p-5">
                 <div className="relative h-full w-full">
                   <Image src={company.svgPath} alt="" fill className="object-contain" />
                 </div>
@@ -76,6 +77,7 @@ export default function PortfolioShowcase() {
             </motion.a>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

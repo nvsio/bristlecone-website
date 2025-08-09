@@ -76,19 +76,19 @@ export default function Philosophy() {
   ];
 
   return (
-    <section id="focus" ref={sectionRef} className="py-24">
+    <section id="focus" ref={sectionRef} className="py-20 sm:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 6 }}
           transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-8 sm:mb-10"
+          className="mb-6 sm:mb-8"
         >
-          <h2 className="text-center text-xs uppercase tracking-[0.2em] sm:text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+          <h2 className="text-center text-[11px] uppercase tracking-[0.24em] sm:text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
             Areas of Focus
           </h2>
         </motion.div>
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+        <div className="mx-auto grid max-w-3xl grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
           {focuses.map((f, i) => (
             <motion.div
               key={f.title}
@@ -97,8 +97,8 @@ export default function Philosophy() {
               transition={{ delay: 0.05 * i, duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <Card>
-                <CardContent className="flex items-center justify-center py-10 sm:py-12">
-                  <h3 className="text-center text-lg font-light sm:text-xl" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
+                <CardContent className="flex items-center justify-center py-8 sm:py-10">
+                  <h3 className="text-center text-base font-light sm:text-lg" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)', letterSpacing: '-0.01em' }}>
                     {String(i + 1).padStart(2, '0')} · {f.title}
                   </h3>
                 </CardContent>

@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import PortfolioShowcase from './components/PortfolioShowcase'
-import HeroCaption from './components/HeroCaption'
 import Philosophy from './components/Philosophy'
 
 export default function Home() {
@@ -17,8 +16,6 @@ export default function Home() {
   return (
     <>
       <main id="main" className="relative min-h-screen overflow-hidden bg-[var(--color-canvas)]">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(255,255,255,0.02)] to-[rgba(0,0,0,0.01)]" />
-      
       <div className="relative flex min-h-screen flex-col items-center justify-center px-6">
         <div 
           className={`
@@ -30,18 +27,7 @@ export default function Home() {
             transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
           }}
         >
-          <div className="relative h-48 w-48 md:h-64 md:w-64">
-            <div 
-              className={`
-                absolute inset-0 rounded-full bg-gradient-to-br from-gray-100 to-gray-50
-                transition-opacity ${imageLoaded ? 'opacity-20' : 'opacity-0'}
-              `}
-              style={{ 
-                filter: 'blur(60px)',
-                transitionDuration: 'var(--transition-slow)' 
-              }}
-            />
-            
+          <div className="relative h-40 w-40 sm:h-56 sm:w-56">
             <div className="relative h-full w-full">
               <Image
                 src="/logo.svg"
@@ -50,25 +36,25 @@ export default function Home() {
                 priority
                 className="object-contain transition-all"
                 style={{
-                  filter: imageLoaded ? 'none' : 'blur(2px)',
-                  opacity: imageLoaded ? 1 : 0.3,
-                  transitionDuration: 'var(--transition-smooth)'
+                  filter: imageLoaded ? 'none' : 'blur(1px)',
+                  opacity: imageLoaded ? 1 : 0.4,
+                  transitionDuration: '800ms'
                 }}
                 onLoad={() => setImageLoaded(true)}
               />
             </div>
           </div>
         </div>
-
-        <HeroCaption />
       </div>
 
-      <div className="relative mt-2">
+      <div className="relative mt-6 sm:mt-8">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
         <PortfolioShowcase />
       </div>
       
-      <Philosophy />
+      <div className="mt-4 sm:mt-6">
+        <Philosophy />
+      </div>
       
       {/* Footer removed by request */}
     </main>
