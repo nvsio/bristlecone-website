@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: "Bristlecone",
   description: "Welcome to Bristlecone",
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   icons: {
     icon: "/favicon.ico",

@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import Navigation from './components/Navigation'
 import PortfolioShowcase from './components/PortfolioShowcase'
 import HeroCaption from './components/HeroCaption'
 import Philosophy from './components/Philosophy'
@@ -17,7 +16,6 @@ export default function Home() {
 
   return (
     <>
-      <Navigation />
       <main id="main" className="relative min-h-screen overflow-hidden bg-[var(--color-canvas)]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(255,255,255,0.02)] to-[rgba(0,0,0,0.01)]" />
       
@@ -65,7 +63,7 @@ export default function Home() {
         <HeroCaption />
       </div>
 
-      <div className="relative mt-8">
+      <div className="relative mt-2">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
         <PortfolioShowcase />
       </div>
